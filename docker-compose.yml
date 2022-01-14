@@ -11,8 +11,8 @@ services:
     image: owncloud/server:${OWNCLOUD_VERSION}
     container_name: owncloud_server
     restart: always
-    ports:
-      - ${HTTP_PORT}:8080
+#    ports:
+#      - ${HTTP_PORT}:8080
     depends_on:
       - mariadb
       - redis
@@ -20,8 +20,8 @@ services:
       - OWNCLOUD_DOMAIN=${OWNCLOUD_DOMAIN}
       - OWNCLOUD_DB_TYPE=mysql
       - OWNCLOUD_DB_NAME=owncloud
-      - OWNCLOUD_DB_USERNAME=owncloud
-      - OWNCLOUD_DB_PASSWORD=owncloud
+      - OWNCLOUD_DB_USERNAME=${MYSQL_USER}
+      - OWNCLOUD_DB_PASSWORD=${MYSQL_PASSWORD}
       - OWNCLOUD_DB_HOST=mariadb
       - OWNCLOUD_ADMIN_USERNAME=${ADMIN_USERNAME}
       - OWNCLOUD_ADMIN_PASSWORD=${ADMIN_PASSWORD}
@@ -41,13 +41,13 @@ services:
     container_name: owncloud_mariadb
     restart: always
     environment:
-      - MYSQL_ROOT_PASSWORD=owncloud
-      - MYSQL_USER=owncloud
-      - MYSQL_PASSWORD=owncloud
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - MYSQL_USER=${MYSQL_USER}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - MYSQL_DATABASE=owncloud
     command: ["--max-allowed-packet=128M", "--innodb-log-file-size=64M"]
     healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-u", "root", "--password=owncloud"]
+      test: ["CMD", "mysqladmin", "ping", "-u", "root", "--password=${MYSQL_ROOT_PASSWORD}"]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -66,8 +66,10 @@ services:
       retries: 5
     volumes:
       - redis:/data
+
   proxy:
-    image: nginx
+    image: nginx:1.21.5
+    container_name: nginx_rev_proxy
     restart: always
     depends_on:
       - owncloud
