@@ -11,7 +11,7 @@ I've tweaked the following example (https://github.com/andrzejd-pl/owncloud-dock
 ## How to use
 
 To use it you must:
-1. Install certbot 'sudo apt install certbot'
+1. Install certbot `sudo apt install certbot`
 2. Generate SSL cert using [certbot](https://certbot.eff.org/), e.g. `sudo certbot certonly --manual --preferred-challenges dns`
 3. (If you haven't) Generate dhparams with 'openssl dhparam -out ssl-dhparams.pem 2048' and move to '/etc/letsencrypt/' folder.
 4. Fill the following environment variables in '.env. file
