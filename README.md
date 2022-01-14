@@ -22,3 +22,4 @@ To use it you must:
 	- `MYSQL_USER`
 	- `MYSQL_PASSWORD`
 5. Replace `domain.com` to your domain in `nginx-conf/default.conf` file.
+(6. And obviously create an A record in your DNS records to point to your IP accourdingly.)
