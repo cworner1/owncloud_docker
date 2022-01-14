@@ -15,10 +15,10 @@ To use it you must:
 2. Generate SSL cert using [certbot](https://certbot.eff.org/), e.g. `sudo certbot certonly --manual --preferred-challenges dns`
 3. (If you haven't) Generate dhparams with `openssl dhparam -out ssl-dhparams.pem 2048` and move to `/etc/letsencrypt/` folder.
 4. Fill the following environment variables in '.env. file
-	-`ADMIN_USERNAME` 
-	-`ADMIN_PASSWORD` 
-	-`OWNCLOUD_DOMAIN`
-	-'MYSQL_ROOT_PASSWORD=owncloud
-	-'MYSQL_USER'
-	-'MYSQL_PASSWORD'
+	- `ADMIN_USERNAME` 
+	- `ADMIN_PASSWORD` 
+	- `OWNCLOUD_DOMAIN`
+	- 'MYSQL_ROOT_PASSWORD=owncloud
+	- 'MYSQL_USER'
+	- 'MYSQL_PASSWORD'
 5. Replace `domain.com` to your domain in `nginx-conf/default.conf` file.
