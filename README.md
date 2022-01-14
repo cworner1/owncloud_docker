@@ -18,7 +18,7 @@ To use it you must:
 	- `ADMIN_USERNAME` 
 	- `ADMIN_PASSWORD` 
 	- `OWNCLOUD_DOMAIN`
-	- 'MYSQL_ROOT_PASSWORD=owncloud
-	- 'MYSQL_USER'
-	- 'MYSQL_PASSWORD'
+	- `MYSQL_ROOT_PASSWORD`
+	- `MYSQL_USER`
+	- `MYSQL_PASSWORD`
 5. Replace `domain.com` to your domain in `nginx-conf/default.conf` file.
